@@ -6,8 +6,8 @@ use crate::gui::menu::create_menu;
 use crate::gui::panel::create_panel;
 use crate::gui::toolbar::create_toolbar;
 
-#[derive(Clone, Copy, PartialEq, Eq)]
-enum ViewportMode {
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum ViewportMode {
     Solid,
     Wireframe,
     Material,
@@ -15,7 +15,7 @@ enum ViewportMode {
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
-enum Tool {
+pub enum Tool {
     Select,
     Move,
     Rotate,
@@ -30,16 +30,17 @@ enum RenderEngine {
     Workbench,
 }
 
+#[derive(Clone)]
 pub struct Renderer3DApp {
     // Scene data
     scene_objects: Vec<String>,
     selected_object: Option<usize>,
 
     // Tool
-    current_tool: Tool,
+    pub(crate) current_tool: Tool,
 
     // Viewport settings
-    viewport_mode: ViewportMode,
+    pub(crate) viewport_mode: ViewportMode,
 
     // Camera settings
     camera_fov: f32,
@@ -74,7 +75,7 @@ impl Default for Renderer3DApp {
 impl eframe::App for Renderer3DApp {
     fn update(&mut self, ctx: &Context, frame: &mut Frame) {
         // Menu bar
-        create_menu();
+        create_menu(self, ctx);
         // Toolbar
         create_toolbar();
         // Central panel ~ 3d viewport
