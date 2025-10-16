@@ -1,0 +1,6 @@
+site_name: Rusterer3d
+theme:
+  name: material
+
+nav:
+  - Home: index.md
