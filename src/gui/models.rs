@@ -75,9 +75,9 @@ impl Default for Renderer3DApp {
 impl eframe::App for Renderer3DApp {
     fn update(&mut self, ctx: &Context, frame: &mut Frame) {
         // Menu bar
-        create_menu(self, ctx);
+        create_toolbar(self, ctx);
         // Toolbar
-        create_toolbar();
+        create_menu();
         // Central panel ~ 3d viewport
         create_panel();
     }
