@@ -14,7 +14,7 @@ pub enum ViewportMode {
     Rendered,
 }
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum Tool {
     Select,
     Move,
@@ -79,6 +79,6 @@ impl eframe::App for Renderer3DApp {
         // Toolbar
         create_toolbar(self, ctx);
         // Central panel ~ 3d viewport
-        create_panel();
+        create_panel(self, ctx);
     }
 }
