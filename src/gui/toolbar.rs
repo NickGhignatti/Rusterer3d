@@ -2,7 +2,7 @@ use eframe::egui;
 use crate::gui::models::{Renderer3DApp, Tool, ViewportMode};
 
 pub fn create_toolbar(app: &mut Renderer3DApp, ctx: &egui::Context) {
-    let _ = egui::TopBottomPanel::bottom("menu").show(ctx, |ui| {
+    let _ = egui::TopBottomPanel::top("toolbar").show(ctx, |ui| {
         ui.horizontal(|ui| {
             ui.label("Tools:");
             ui.separator();

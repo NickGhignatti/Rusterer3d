@@ -33,8 +33,8 @@ enum RenderEngine {
 #[derive(Clone)]
 pub struct Renderer3DApp {
     // Scene data
-    scene_objects: Vec<String>,
-    selected_object: Option<usize>,
+    pub(crate) scene_objects: Vec<String>,
+    pub(crate) selected_object: Option<usize>,
 
     // Tool
     pub(crate) current_tool: Tool,
@@ -75,9 +75,9 @@ impl Default for Renderer3DApp {
 impl eframe::App for Renderer3DApp {
     fn update(&mut self, ctx: &Context, frame: &mut Frame) {
         // Menu bar
-        create_toolbar(self, ctx);
+        create_menu(self, ctx);
         // Toolbar
-        create_menu();
+        create_toolbar(self, ctx);
         // Central panel ~ 3d viewport
         create_panel();
     }
