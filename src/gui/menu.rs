@@ -1,7 +1,10 @@
-use eframe::egui;
 use crate::gui::models::Renderer3DApp;
+use crate::gui::objects::Object;
+use crate::gui::objects::ObjectType::{Cube, Cylinder, Sphere};
+use eframe::egui;
+use eframe::egui::accesskit::Size;
 
-pub fn create_menu(app: &mut Renderer3DApp, ctx: &egui::Context){
+pub fn create_menu(app: &mut Renderer3DApp, ctx: &egui::Context) {
     let _ = egui::TopBottomPanel::top("menu_bar").show(ctx, |ui| {
         egui::containers::menu::MenuBar::new().ui(ui, |ui| {
             ui.menu_button("File", |ui| {
@@ -43,16 +46,37 @@ pub fn create_menu(app: &mut Renderer3DApp, ctx: &egui::Context){
 
             ui.menu_button("Add", |ui| {
                 if ui.button("Mesh > Cube").clicked() {
-                    app.scene_objects.push("Cube".to_owned());
+                    app.scene_objects.push(Object::new(
+                        Cube,
+                        app.drawing_panel_center,
+                        Size::new(400.0, 400.0),
+                    ));
                 }
                 if ui.button("Mesh > Sphere").clicked() {
-                    app.scene_objects.push("Sphere".to_owned());
+                    app.scene_objects.push(Object::new(
+                        Sphere,
+                        app.drawing_panel_center,
+                        Size::new(400.0, 400.0),
+                    ));
                 }
                 if ui.button("Mesh > Cylinder").clicked() {
-                    app.scene_objects.push("Cylinder".to_owned());
+                    app.scene_objects.push(Object::new(
+                        Cylinder,
+                        app.drawing_panel_center,
+                        Size::new(400.0, 400.0),
+                    ));
                 }
-                if ui.button("Light > Point Light").clicked() {
-                    app.scene_objects.push("Point Light".to_owned());
+                // if ui.button("Light > Point Light").clicked() {
+                //     app.scene_objects.push("Point Light".to_owned());
+                // }
+            });
+
+            ui.menu_button("View", |ui| {
+                if ui.button("View objects list").clicked() {
+                    app.objects_list_menu = !app.objects_list_menu;
+                }
+                if ui.button("View object properties").clicked() {
+                    app.objects_properties_menu = !app.objects_properties_menu;
                 }
             });
         });
