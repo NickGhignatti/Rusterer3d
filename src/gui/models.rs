@@ -106,5 +106,11 @@ impl eframe::App for Renderer3DApp {
         if self.objects_properties_menu {
             create_property_menu(self, ctx);
         }
+        
+        // TODO()
+        
+        // 1. Add listener for every tool -> apply their behaviors
+        
+        // 2. Add 3D view
     }
 }

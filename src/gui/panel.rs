@@ -52,6 +52,7 @@ pub fn create_panel(app: &mut Renderer3DApp, ctx: &egui::Context) {
 
         let available_rect = ui.available_rect_before_wrap();
         ui.scope_builder(UiBuilder::new().max_rect(available_rect), |ui| {
+            // TODO()
             // This would be where you integrate your 3D rendering
             // For now, we'll just show a placeholder
             let painter = ui.painter();

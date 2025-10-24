@@ -34,4 +34,19 @@ impl Object {
             size
         }
     }
+
+    pub fn move_to(obj: Self, new_coordinates: Point) -> Self {
+        Self {
+            coordinates: new_coordinates,
+            ..obj
+        }
+    }
+
+    pub fn scale(obj: Self, scale_factor: f64) -> Self {
+        // TODO()
+        // Reason about the usage of a scale factor, cause may a new width/height can be better
+        Self {
+            ..obj
+        }
+    }
 }
